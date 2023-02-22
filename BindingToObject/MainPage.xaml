@@ -26,8 +26,8 @@
         
         <!--  גיל  -->
         <Label HorizontalOptions="Center" Text="{Binding Age}" />
-        <Slider x:Name="ageSlider" Minimum="2006" Maximum="2555"
-                 ValueChanged="ageSlider_ValueChanged"
+        <Slider x:Name="ageSlider" Minimum="2006" Maximum="2555" Value="{Binding CurrentDate.Year}"
+                
               >
          <!--מכיון שהנתונים של הדף מקושרים לסטודנט... 
             חייבים לציין במפורש לאיפה התווית צריכה לגשת-->

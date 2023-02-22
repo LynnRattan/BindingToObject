@@ -24,7 +24,7 @@ public partial class MainPage : ContentPage
 
     private void ageSlider_ValueChanged(object sender, ValueChangedEventArgs e)
     {
-
+        student.CurrentDate = new DateTime((int)e.NewValue, student.BirthDate.Month, student.BirthDate.Day);
     }
 }
 
