@@ -2,29 +2,37 @@
 <ContentPage
     x:Class="BindingToObject.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:models="clr-namespace:BindingToObject.Models"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:DataType="models:Student">
 
     <!--  פריסה לאורך  -->
     <StackLayout
         Padding="10"
         HorizontalOptions="Center"
         Spacing="13">
-        <Label HorizontalOptions="Center" Text="" />
+        <!--שם תלמיד-->
+        <Label HorizontalOptions="Center" Text="{Binding Name}" />
 
         <!--  מסגרת עגולה מסביב לתמונה  -->
         <Border HeightRequest="180" WidthRequest="180">
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="90" />
+                <RoundRectangle  CornerRadius="90" />
             </Border.StrokeShape>
-            <Image HorizontalOptions="Center" Source="" />
+            <Image  HorizontalOptions="Center" Source="{Binding Image}" />
         </Border>
         <!--  תאריך לידה  -->
-        <Label Text="" />
+        <Label HorizontalOptions="Center" Text="{Binding BirthDate,StringFormat='{0:dd/MM/yyyy}'}" />
         <!--  חישוב גיל  -->
-        <Button Clicked="Button_Clicked" Text="חשב גיל" />
+        
         <!--  גיל  -->
-        <Label HorizontalOptions="Center" Text="" />
-
+        <Label HorizontalOptions="Center" Text="{Binding Age}" />
+        <Slider x:Name="ageSlider" Minimum="2006" Maximum="2555"
+                 ValueChanged="ageSlider_ValueChanged"
+              >
+         <!--מכיון שהנתונים של הדף מקושרים לסטודנט... 
+            חייבים לציין במפורש לאיפה התווית צריכה לגשת-->
+        </Slider>
+        <Label HorizontalOptions="Center" Text="{Binding Source={x:Reference ageSlider},Path=Value, StringFormat='{0:F0}'}"/>
     </StackLayout>
 
 </ContentPage>
