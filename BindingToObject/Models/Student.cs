@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BindingToObject.Models
 {
+    //ממשק מגדיר אירוע שיאפשר לאובייקט שלנו להודיע על שינויים בתכונות
     internal class Student:INotifyPropertyChanged
     {
         public string Name { get; set; }    
@@ -19,8 +20,10 @@ namespace BindingToObject.Models
 
         public DateTime CurrentDate { get { return currentDate; } set 
             { 
+                //כאשר תאריך נוכחי משתנה
                 if (value != currentDate)
                 { currentDate = value;
+                    //גם תאריך נוכחי וגם גיל משתנים
                  OnPropertyChanged("CurrentDate"); OnPropertyChanged("Age"); } 
             } 
         }
@@ -30,6 +33,7 @@ namespace BindingToObject.Models
         {
             CurrentDate = DateTime.Now; 
         }
+        //נפעיל את האירוע ונשלח כפרמטר את הסטודנט שלנו ואת שם התכונה שבוצע בה שינוי
         public void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
