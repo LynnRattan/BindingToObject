@@ -1,42 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-    <!--נגדיר models הפנייה למיקום של המחלקות עצמים שלנו
-    נגדיר DataType שיזהה את התכונות של האובייקט שלנו--> 
+<!--
+    נגדיר models הפנייה למיקום של המחלקות עצמים שלנו
+    נגדיר DataType שיזהה את התכונות של האובייקט שלנו
+-->
 <ContentPage
     x:Class="BindingToObject.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:BindingToObject.Models"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:DataType="models:Student">
+    x:DataType="models:Student">
 
     <!--  פריסה לאורך  -->
     <StackLayout
         Padding="10"
         HorizontalOptions="Center"
         Spacing="13">
-        <!--שם תלמיד-->
+        <!--  שם תלמיד  -->
         <Label HorizontalOptions="Center" Text="{Binding Name}" />
 
-        <!--  מסגרת עגולה מסביב לתמונה  -->
-        <Border HeightRequest="180" WidthRequest="180">
-            <Border.StrokeShape>
-                <RoundRectangle  CornerRadius="90" />
-            </Border.StrokeShape>
-            <Image  HorizontalOptions="Center" Source="{Binding Image}" />
-        </Border>
-        <!--  תאריך לידה  -->
-        <Label HorizontalOptions="Center" Text="{Binding BirthDate,StringFormat='{0:dd/MM/yyyy}'}" />
-        <!--  חישוב גיל  -->
-        
+
+
         <!--  גיל  -->
         <Label HorizontalOptions="Center" Text="{Binding Age}" />
-        
-        <!--הסליידר מחובר לשנה, אבל השנה לא מתעדכנת מהסליידר כי התכונה "שנה" היא לקריאה בלבד
-        ולכן צריך אירוע שיעדכן את התאריך הנוכחי בתלמיד-->
-        <Slider x:Name="ageSlider" Minimum="2006" Maximum="2555" Value="{Binding CurrentDate.Year}"
-                 ValueChanged="ageSlider_ValueChanged">
-         <!--מכיון שהנתונים של הדף מקושרים לסטודנט... 
-            חייבים לציין במפורש לאיפה התווית צריכה לגשת-->
-        </Slider>
-        <Label HorizontalOptions="Center"  Text="{Binding Source={x:Reference ageSlider},Path=Value, StringFormat='{0:F0}'}"/>
+
+        <Button Clicked="ChangeName" Text="שנה שם" />
+
+        <Button Clicked="ChangeAge" Text="שנה גיל" />
+
     </StackLayout>
 
 </ContentPage>

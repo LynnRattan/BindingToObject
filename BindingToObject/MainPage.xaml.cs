@@ -13,8 +13,8 @@ public partial class MainPage : ContentPage
         student = new Student()
         {
             Name = "Roni",
-            BirthDate = new DateTime(2006, 2, 19),
-            Image="roni.jpg"
+            Age = 16
+           
         };
         //נקשר אותו לדף שלנו
         //כל הפקדים יקבלו גישה לנתונים שלו
@@ -24,9 +24,16 @@ public partial class MainPage : ContentPage
 
     }
 
-    private void ageSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+   
+
+    private void ChangeName(object sender, EventArgs e)
     {
-        student.CurrentDate = new DateTime((int)e.NewValue, student.BirthDate.Month, student.BirthDate.Day);
+        student.Name = "אחר";
+    }
+
+    private void ChangeAge(object sender, EventArgs e)
+    {
+        student.Age = 17;
     }
 }
 
